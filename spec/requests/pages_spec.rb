@@ -1,5 +1,4 @@
 require 'rails_helper'
-# rubocop:disable RSpec/Rails/InferredSpecType
 RSpec.describe 'Pages', type: :request do
   describe 'GET /' do
     context 'when signed in' do
@@ -26,4 +25,3 @@ RSpec.describe 'Pages', type: :request do
     end
   end
 end
-# rubocop:enable RSpec/Rails/InferredSpecType
