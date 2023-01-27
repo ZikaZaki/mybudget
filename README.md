@@ -78,7 +78,7 @@
 
 ## 🚀 Live Video Demo <a name="live-video-demo"></a>
 
-- [Live Demo Link](https://www.loom.com/share/9888e6f977c44c46a77bf4e115640f9f)
+- [Live Video Demo](https://www.loom.com/share/9888e6f977c44c46a77bf4e115640f9f)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
