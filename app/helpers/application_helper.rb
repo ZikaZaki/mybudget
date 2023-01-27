@@ -18,7 +18,7 @@ module ApplicationHelper
     # 'flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium
     # text-white shadow-sm hover:bg-indigo-700
     # focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-    'flex w-full justify-center rounded-full  bg-lightBlue text-white hover:bg-darkBlue font-bold
+    'flex w-full justify-center rounded-lg  bg-lightBlue text-white hover:bg-darkBlue font-bold
         py-2 px-4 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2'
   end
 
@@ -26,7 +26,7 @@ module ApplicationHelper
     # 'flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium
     # text-white shadow-sm hover:bg-indigo-700
     # focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-    'flex w-full justify-center rounded-full  bg-lightGreen text-white hover:bg-darkGreen font-bold
+    'flex w-full justify-center rounded-lg uppercase  bg-lightGreen text-white hover:bg-darkGreen font-bold
         py-2 px-4 focus:outline-none focus:ring-2 focus:ring-darkBlue focus:ring-offset-2'
   end
 end
