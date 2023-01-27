@@ -3,7 +3,10 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index
-    @categories = Category.all
+    @categories = current_user.categories.includes(:category_payments)
+    @totals = @categories.map do |category|
+      category.category_payments.reduce(0) { |sum, num| sum + num.payment.amount }
+    end
   end
 
   # GET /categories/1
@@ -20,6 +23,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
+    @category.author = current_user
 
     if @category.save
       redirect_to @category, notice: 'Category was successfully created.'

@@ -1,12 +1,69 @@
 <div id="<%= dom_id category %>">
-  <p>
-    <strong>Name:</strong>
-    <%= category.name %>
-  </p>
+  <div class="card flex flex-col max-w-sm p-2 border-2 min-w-full overflow-hidden rounded-lg">
+    <div class="flex w-full items-center">
+        <div class="flex-shrink-0">
+          <img src="<%= category.icon %>" alt="category thumbnail" class="h-24 w-24 rounded-lg">
+        </div>
+        <div class="p-1 w-full flex justify-between mx-2">
+          <p class="excerpt tag text-2xl text-gray-500">
+            <%= category.name %>
+          </p>
+          <div class="flex space-x-2 justify-end">
+            <span class="inline-block text-gray-400 font-medium text-xs underline underline-offset-4 leading-none uppercase flex items-center">
+              Transactions:
+              <span class="inline-block py-1 px-1.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-lightBlue text-white rounded-full ml-2">
+                <%= category.category_payments.count %>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    <div class="px-2 pt-4 pb-2">
+      <p class="text-gray-400 text-base">
+        This is the category description which is going to be a future feature.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, 
+        nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+      </p>
+    </div>
+    <div class="date px-2 pb-1 text-gray-400"><%= category.created_at %></div>
+    <hr />
+    <div class="flex justify-between px-2 pt-2">
+      <span class="inline-block py-1 uppercase text-2xl text-gray-500">Total Amount</span>
+      <span class="inline-block py-1 uppercase  font-semibold text-2xl text-darkBlue">
+        <% if category.total > 0 %>
+            $<%= category.total %>
+          <% else %>
+            $0
+          <% end %>
+      </span>
+    </div>
+  </div>
+  <br />
+  <% category.category_payments.each_with_index do |payment, index| %>
+    <div class="card flex min-w-full py-2"> 
+      <div class="card flex p-2 border-2 w-full rounded-lg">
+        <div class="flex-shrink-0">
+          <img src="<%= category.icon %>" alt="category thumbnail" class="h-24 w-24 rounded-lg">
+        </div>
+        <div class="card flex flex-col p-2 w-full justify-between h-full">
+        <div class="middle p-1 w-full flex justify-between mx-2">
+          <p class="excerpt tag text-2xl text-gray-500">
+            <%= payment.payment.name %>
+          </p>
+          <p class="excerpt px-1 tag text-2xl font-semibold text-darkGray">
+            $<%= payment.payment.amount %>
+          </p>
+        </div>
+        <div class="bottom w-full flex justify-between mx-2 text-gray-400">
+          <div class="date px-1"><%= payment.created_at %></div>
+          <div class="readmore px-2 text-sky-600">Show Details</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
-  <p>
-    <strong>Icon:</strong>
-    <%= category.icon %>
-  </p>
-
+  <div class="flex p-10 justify-center sm:px-40 md:py-15">
+    <%= link_to "New Transaction", new_payment_path(id: category.id),  class: form_button_class %>
+  </div>
 </div>

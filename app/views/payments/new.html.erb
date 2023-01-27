@@ -1,9 +1,10 @@
-<h1>New payment</h1>
-
-<%= render "form", payment: @payment %>
+<div class="p-5">
+  <h2 class="mb-2 text-center text-3xl font-bold tracking-tight text-darkBlue">New Transaction</h2>
+  <%= render "form", payment: @payment %>
+</div>
 
 <br>
 
 <div>
-  <%= link_to "Back to payments", payments_path %>
+  <!-- %= link_to "Back to transactions", payments_path % -->
 </div>

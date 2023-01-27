@@ -3,7 +3,13 @@ class PaymentsController < ApplicationController
 
   # GET /payments
   def index
-    @payments = Payment.all
+    @payments = current_user.payments.select do |payment|
+      payment.category_payments[0].category.id == params[:id].to_i
+    end
+    @total = @payments.reduce(0) { |sum, num| sum + num.amount }
+
+    @category_id = params[:id]
+    @category = Category.find(@category_id)
   end
 
   # GET /payments/1
@@ -12,6 +18,9 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
+    @categories = current_user.categories.map { |category| [category.name, category.id] }
+    @category_id = params[:id]
+    # @category_page_path = transaction_index_path_url(id: params[:id])
   end
 
   # GET /payments/1/edit
@@ -19,10 +28,14 @@ class PaymentsController < ApplicationController
 
   # POST /payments
   def create
-    @payment = Payment.new(payment_params)
+    @payment = Payment.new(name: payment_params[:name], amount: payment_params[:amount], author: current_user)
+    @payment.save
+    @selected_category = Category.find(payment_params[:category])
+    @new_category_payment = CategoryPayment.new(payment: @payment, category: @selected_category)
+    @new_category_payment.save
 
-    if @payment.save
-      redirect_to @payment, notice: 'Payment was successfully created.'
+    if @payment.save && @new_category_payment.save
+      redirect_to @selected_category, notice: 'Payment was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -52,6 +65,7 @@ class PaymentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def payment_params
-    params.require(:payment).permit(:name, :amount)
+    params.require(:payment).permit(:name, :amount, :category_id, :category)
+    # params.require(:payment).permit(:name, :amount)
   end
 end

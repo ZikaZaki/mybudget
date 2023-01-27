@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :payments
   resources :categories
+  resources :category_payments
+  resources :payments
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,5 +9,5 @@ Rails.application.routes.draw do
   root 'splashscreen#index'
   # get 'pages#home'
   # get "index", to: "splashscreen#index", as: "splashscreen"
-  get 'pages/home', to: 'pages#home', as: 'home'
+  # get 'pages/home', to: 'pages#home', as: 'home'
 end

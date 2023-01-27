@@ -1,14 +1,40 @@
+<% content_for(:page_name) { "Categories" } %>
+
+
 <p style="color: green"><%= notice %></p>
-
-<h1>Categories</h1>
-
 <div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
+  <% if @categories.length == 0 %>
+   <h2 class="text-center mt-5"> No categories yet</h2>
+  <% end %>
+
+  <% @categories.each_with_index do |category,index| %>
+    <%= link_to category_path(category), class: "card flex p-2 border-2 w-full rounded-lg" do %> 
+      <div class="card-image flex-shrink-0">
+        <img src="<%= category.icon %>" alt="category thumbnail" class="h-24 w-24 rounded-lg">
+      </div>
+      <div class="card-details flex flex-col justify-between w-full min-h-full">
+        <div class="flex w-full justify-between items-center p-3">
+          <p class="excerpt tag text-2xl text-gray-500">
+            <%= category.name %>
+          </p>
+          <p class="excerpt px-1 tag text-2xl font-semibold text-darkGray">
+            <% if @totals[index] > 0 %>
+              $<%= @totals[index] %>
+            <% else %>
+              $0
+            <% end %>
+          </p>
+        </div>
+        <div class="card-date flex justify-between py-2 px-3 w-full text-gray-400">
+          <div class="date"><%= category.created_at %></div>
+          <div class="readmore text-sky-600">Show Details</div>
+        </div>
+      </div>
+    <% end %>
+    <br />
   <% end %>
 </div>
 
-<%= link_to "New category", new_category_path %>
+<div class="flex p-10 justify-center sm:px-40 md:py-15">
+  <%= link_to "New Category", new_category_path,  class: save_button_class %>
+</div>

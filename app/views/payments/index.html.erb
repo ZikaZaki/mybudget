@@ -1,8 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Payments</h1>
-
 <div id="payments">
+ <% if @payments.length == 0 %>
+   <h2 class="text-center mt-5"> No transactions yet</h2>
+  <% end %>
+
   <% @payments.each do |payment| %>
     <%= render payment %>
     <p>
@@ -11,4 +13,6 @@
   <% end %>
 </div>
 
-<%= link_to "New payment", new_payment_path %>
+<div class="flex p-10 justify-center sm:px-40 md:py-15">
+  <%= link_to "New Transaction", new_payment_path,  class: save_button_class %>
+</div>
