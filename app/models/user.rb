@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # # associations
+  has_many :categories, foreign_key: 'author_id'
   # has_many :payments, foreign_key: 'author_id'
-  # has_many :categories, foreign_key: 'author_id'
 
   # validations
   validates :first_name, :last_name, presence: true
@@ -15,8 +15,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
+  validates_associated :categories
   # validates_associated :payments
-  # validates_associated :categories
 
   def full_name
     [first_name, last_name].join(' ')
