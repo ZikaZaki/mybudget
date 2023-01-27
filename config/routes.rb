@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'splashscreen#index'
   # get 'pages#home'
-  get "index", to: "splashscreen#index", as: "splashscreen"
-  # get 'pages/home'
+  # get "index", to: "splashscreen#index", as: "splashscreen"
+  get 'pages/home', to: 'pages#home', as: 'home'
 end
