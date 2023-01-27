@@ -1,6 +1,6 @@
 class Payment < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  # has_many :category_payments, dependent: :destroy
+  has_many :category_payments, dependent: :destroy
 
   # validations
   validates :name, presence: true
@@ -8,5 +8,5 @@ class Payment < ApplicationRecord
   validates :amount, numericality: true
   validates :amount, numericality: { greater_than: 0 }
   validates :name, length: { maximum: 100 }
-  # validates_associated :category_payments
+  validates_associated :category_payments
 end
