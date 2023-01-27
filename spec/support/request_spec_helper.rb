@@ -2,8 +2,8 @@ module RequestSpecHelper
   include Warden::Test::Helpers
 
   def self.included(base)
-    base.before(:each) { Warden.test_mode! }
-    base.after(:each) { Warden.test_reset! }
+    base.before { Warden.test_mode! }
+    base.after { Warden.test_reset! }
   end
 
   def sign_in(resource)
@@ -28,5 +28,5 @@ end
 
 RSpec.configure do |config|
   config.include RequestSpecHelper, type: :request
-  config.before(:each, type: :request) { host! "localhost:3000" }
+  config.before(:each, type: :request) { host! 'localhost:3000' }
 end
