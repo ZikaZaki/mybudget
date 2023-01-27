@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   # # associations
   has_many :categories, foreign_key: 'author_id'
-  # has_many :payments, foreign_key: 'author_id'
+  has_many :payments, foreign_key: 'author_id'
 
   # validations
   validates :first_name, :last_name, presence: true
@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
   validates_associated :categories
-  # validates_associated :payments
+  validates_associated :payments
 
   def full_name
     [first_name, last_name].join(' ')
