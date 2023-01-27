@@ -19,7 +19,7 @@
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [🚀 Live Video Demo ](#-live-video-demo-)
-  - [🚀 Live Demo (Deployed on Heroku) ](#-live-demo-deployed-on-heroku-)
+  - [🚀 Live Demo (Deployed on Render) ](#-live-demo-deployed-on-render-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -78,13 +78,13 @@
 
 ## 🚀 Live Video Demo <a name="live-video-demo"></a>
 
-- [Live Demo Link](https://www.loom.com/share/bcbd7286d8d84e94bc634523b6ab455f)
+- [Live Demo Link](https://www.loom.com/share/9888e6f977c44c46a77bf4e115640f9f)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Live Demo (Deployed on Heroku) <a name="live-demo"></a>
+## 🚀 Live Demo (Deployed on Render) <a name="live-demo"></a>
 
-- [Live Demo Link](https://mybudget-app.herokuapp.com/)
+- [Live Demo Link](https://rails-597a.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
